@@ -3,3 +3,5 @@ data/
 *.pth
 __pycache__/
 .DS_Store
+*.zip
+*.csv
