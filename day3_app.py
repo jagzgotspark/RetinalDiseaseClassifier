@@ -128,11 +128,11 @@ if uploaded is not None:
 
     with col1:
         st.subheader("Original image")
-        st.image(img_pil.resize((IMG_SIZE, IMG_SIZE)), use_column_width=True)
+        st.image(img_pil.resize((IMG_SIZE, IMG_SIZE)), use_container_width=True)
 
     with col2:
         st.subheader("Grad-CAM explanation")
-        st.image(overlay, use_column_width=True)
+        st.image(overlay, use_container_width=True)
         st.caption("Red/yellow = regions with highest influence on prediction")
 
     # ── Confidence bar chart ──────────────────────────────────────────────────

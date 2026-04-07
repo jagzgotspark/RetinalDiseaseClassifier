@@ -174,8 +174,17 @@ class GradCAM:
 
 def overlay_heatmap(img_pil, cam, alpha=0.45):
     """Overlay Grad-CAM heatmap on the original fundus image."""
-    img_np = np.array(img_pil.resize((224, 224))) / 255.0
-    heatmap = cm.jet(cam)[:, :, :3]  # (H, W, 3), drop alpha channel
+    img_resized = img_pil.resize((224, 224))
+    img_np = np.array(img_resized) / 255.0  # (224, 224, 3)
+
+    # cam may be smaller than 224x224 (e.g. 7x7 from last conv block)
+    # resize it to match the image before colorizing
+    cam_pil = Image.fromarray((cam * 255).astype(np.uint8)).resize(
+        (224, 224), resample=Image.BILINEAR
+    )
+    cam_resized = np.array(cam_pil) / 255.0  # (224, 224), values in [0,1]
+
+    heatmap = cm.jet(cam_resized)[:, :, :3]  # (224, 224, 3), drop alpha
     overlay = alpha * heatmap + (1 - alpha) * img_np
     overlay = np.clip(overlay, 0, 1)
     return (overlay * 255).astype(np.uint8)
