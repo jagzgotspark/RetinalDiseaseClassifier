@@ -158,9 +158,11 @@ catch it before deployment.
 ---
 
 ## Limitations
-Trained only on APTOS → may not generalize to other datasets
-Sensitive to image quality and artifacts
-Not clinically validated → for research/demo use only
+
+- Trained only on APTOS → may not generalize to other datasets
+- Sensitive to image quality and artifacts
+- Not clinically validated → for research/demo use only
+  
 ---
 
 ## References
