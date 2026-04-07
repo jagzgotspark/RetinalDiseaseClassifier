@@ -157,6 +157,12 @@ catch it before deployment.
 
 ---
 
+## Limitations
+Trained only on APTOS → may not generalize to other datasets
+Sensitive to image quality and artifacts
+Not clinically validated → for research/demo use only
+---
+
 ## References
 
 - Selvaraju et al. (2017). *Grad-CAM: Visual Explanations from Deep Networks via
